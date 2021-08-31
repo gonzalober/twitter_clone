@@ -5,7 +5,7 @@
     <title>Twitter</title>
 </head>
 <body>
-    <h1>Twitter</h1>
+    <h1>Twitter_Clone</h1>
 
     <!-- These `th:` attributes are thymeleaf annotations. They're template placeholders. -->
     <form action="#" th:action="@{/tweets}" th:object="${newTweet}" method="post">
@@ -22,6 +22,7 @@
         <!--vvvvvvv  vvvvvvvvvvvvvvvv This syntax loops over each item in `tweets`, calling it `tweet` -->
         <li th:each="tweet: ${tweets}">
             <span th:text="${tweet.body}"></span>
+            <span th:text="${tweet.id}"></span>
             <!--  ^^^^^^^  ^^^^^^^^^^^^^ And this pulls the body of the tweet out, and puts it into element -->
         </li>
     </ul>
