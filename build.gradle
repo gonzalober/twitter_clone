@@ -1,0 +1,39 @@
+// This file sets up our project for the Gradle task runner and package manager
+// You mostly use it to add dependencies and libraries
+
+plugins {
+	id 'org.springframework.boot' version '2.5.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'tech.makers'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11' // This is the version of Java we're targetting
+
+repositories {
+	mavenCentral()
+}
+
+// Here are all of our dependencies!
+dependencies {
+	// The JPA Object-Relational Mapper, for accessing Postgres
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'org.postgresql:postgresql'
+
+	// Spring can do many things. We want it to run a web application, so we depend on that part.
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// We want the Thymeleaf view templates library
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	// Basic test support via spring-boot-starter-test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// And feature test support through Selenium, hooking into something Spring provides called HtmlUnit
+	testImplementation 'org.seleniumhq.selenium:htmlunit-driver'
+}
+
+test {
+	useJUnitPlatform()
+}

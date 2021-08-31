@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter</title>
+</head>
+<body>
+    <h1>Twitter</h1>
+
+    <!-- These `th:` attributes are thymeleaf annotations. They're template placeholders. -->
+    <form action="#" th:action="@{/tweets}" th:object="${newTweet}" method="post">
+        <!--                                ^^^^^^^^^^^^^^^^^^^^^^^ This tells Thymeleaf to template the form
+                                                                    based on our newTweet set up in the controller. -->
+        <!--         ^^^^^^^^^^^^^^^^^^^^^^ This tells Thymeleaf to submit the form to /tweets -->
+        <input type="text" id="tweet-form-body" th:field="*{body}">
+        <!--                                    ^^^^^^^^^^^^^^^^^^ This references the `body` field of `newTweet`  -->
+        <input type="submit" id="tweet-form-submit" value="Post">
+        <!--                 ^^^^^^^^^^^^^^^^^^^^^^ These IDs are here so the tests know what to look for -->
+    </form>
+
+    <ul>
+        <!--vvvvvvv  vvvvvvvvvvvvvvvv This syntax loops over each item in `tweets`, calling it `tweet` -->
+        <li th:each="tweet: ${tweets}">
+            <span th:text="${tweet.body}"></span>
+            <!--  ^^^^^^^  ^^^^^^^^^^^^^ And this pulls the body of the tweet out, and puts it into element -->
+        </li>
+    </ul>
+</body>
+</html>
