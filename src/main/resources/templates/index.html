@@ -23,6 +23,7 @@
         <li th:each="tweet: ${tweets}">
             <span th:text="${tweet.body}"></span>
             <span th:text="${tweet.id}"></span>
+            <span th:text="${tweet.created_at}"></span>
             <!--  ^^^^^^^  ^^^^^^^^^^^^^ And this pulls the body of the tweet out, and puts it into element -->
         </li>
     </ul>
