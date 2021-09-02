@@ -11,5 +11,5 @@ import java.util.List;
 public interface TweetRepository extends CrudRepository<Tweet, Long> {
     //  This is how we specify the Entity it refers to. ^^^^^
     List<Tweet> findById(long id);
-    List<Tweet> findByAllByOrderCreated_atDesc();
+    List<Tweet> findAllByOrderByCreatedAtDesc();
 }

@@ -24,7 +24,7 @@ public class TweetsController {
         // Model is the 'view model'. We add attributes on it, which then
         // get passed into the views in `src/main/resources/templates/index.html`.
         model.addAttribute("newTweet", new TweetForm());
-        model.addAttribute("tweets", tweetRepository.findByAllByOrderCreated_atDesc());
+        model.addAttribute("tweets", tweetRepository.findAllByOrderByCreatedAtDesc());
         return "index";
         //     ^^^^^^^ This is how Spring knows what template to use.
     }

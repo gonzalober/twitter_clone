@@ -18,18 +18,18 @@ public class Tweet {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String body;
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     protected Tweet(String body) {}
 
     public Tweet(String body, Clock clock) {
         this.body = body;
-        this.created_at = LocalDateTime.now(clock);
+        this.createdAt = LocalDateTime.now(clock);
     }
 
     @Override
     public String toString() {
-        return String.format("Tweet[id=%d, body='%s', created_at=%s]", id, body, created_at);
+        return String.format("Tweet[id=%d, body='%s', createdAt=%s]", id, body, createdAt);
     }
 
     public Long getId() {
@@ -40,5 +40,5 @@ public class Tweet {
         return this.body;
     }
 
-    public LocalDateTime getCreated_at() { return created_at; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
 }
