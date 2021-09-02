@@ -1,23 +1,37 @@
 package tech.makers.twitter;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TweetTest {
+    private Clock mockClock;
+    @BeforeEach
+    void setup(){
+        String fixedDate="2021-09-01T00:00:00Z";
+        ZoneId zoneId = ZoneId.systemDefault();
+        mockClock= Clock.fixed(Instant.parse(fixedDate),zoneId);
+    }
 
     @Test
 
     void testConstructs() {
-        Tweet subject = new Tweet("Hello, world!");
+        Tweet subject = new Tweet("Hello, world!", mockClock);
         assertEquals("Hello, world!", subject.getBody());
         assertEquals(null, subject.getId());
-        assertEquals(null, subject.getCreated_at());
+        assertEquals(LocalDateTime.now(mockClock),subject.getCreated_at());
+
     }
 
     @Test
     void testToString() {
-        Tweet subject = new Tweet("Hello, world!");
-        assertEquals("Tweet[id=null, body='Hello, world!', created_at= Wed Sep 01 17:18:40 BST 2021]", subject.toString());
+        Tweet subject = new Tweet("Hello, world!",mockClock);
+        assertEquals("Tweet[id=null, body='Hello, world!', created_at="+LocalDateTime.now(mockClock)+"]", subject.toString());
     }
 }
