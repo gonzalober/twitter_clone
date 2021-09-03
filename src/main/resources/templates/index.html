@@ -22,7 +22,7 @@
         <!--vvvvvvv  vvvvvvvvvvvvvvvv This syntax loops over each item in `tweets`, calling it `tweet` -->
         <li th:each="tweet: ${tweets}">
             <span th:text="${tweet.body}"></span>
-            <span th:text="${tweet.id}"></span>
+
             <span th:text="${tweet.createdAt}"></span>
             <!--  ^^^^^^^  ^^^^^^^^^^^^^ And this pulls the body of the tweet out, and puts it into element -->
         </li>

@@ -20,7 +20,12 @@ public class Tweet {
     private String body;
     private LocalDateTime createdAt;
 
-    protected Tweet(String body) {}
+    protected Tweet() {}
+
+    public Tweet(String body) {
+        this.body = body;
+        this.createdAt = LocalDateTime.now(Clock.systemUTC());
+    }
 
     public Tweet(String body, Clock clock) {
         this.body = body;
@@ -40,5 +45,5 @@ public class Tweet {
         return this.body;
     }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getCreatedAt() { return this.createdAt; }
 }

@@ -26,7 +26,6 @@ public class TweetTest {
         assertEquals("Hello, world!", subject.getBody());
         assertEquals(null, subject.getId());
         assertEquals(LocalDateTime.now(mockClock),subject.getCreatedAt());
-
     }
 
     @Test
